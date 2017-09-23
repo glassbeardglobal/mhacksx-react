@@ -5,11 +5,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
 import Landing from './scenes/Landing';
 import Navbar from './components/Navbar';
-import StoryCard from './components/StoryCard';
+import CardContainer from './components/CardContainer';
 
 const App = () => (
   <div className="container">
-    <Route exact path="/" component={StoryCard} />
+    <Route exact path="/" component={CardContainer} />
   </div>
 );
 
