@@ -1,0 +1,16 @@
+.navbar-button {
+  background-color: #81d4fa;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  font-size: 1em;
+  text-decoration: none;
+  margin: 8px;
+  color: #fff;
+  padding: 8px;
+  border-radius: 2px;
+}
+
+.navbar-button:hover {
+  background-color: #81d4fa;
+  color: #fff;
+}
