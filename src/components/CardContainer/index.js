@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import StoryCard from '../StoryCard';
 
+import './CardContainer.css';
+
 class CardContainer extends Component {
   constructor() {
     super();
@@ -34,7 +36,8 @@ class CardContainer extends Component {
         />
       );
     });
-    return <div>{cards}</div>;
+
+    return <div className="cardContainer">{cards}</div>;
   }
 }
 

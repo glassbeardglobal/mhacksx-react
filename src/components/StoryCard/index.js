@@ -58,11 +58,9 @@ class StoryCard extends Component {
         <div className="card-content">
           <p className="card-context">{this.props.content}</p>
         </div>
-        <div className="card-branch-container">
-          <button className="branch-button">Branch 1</button>
-          <button className="branch-button">Branch 2</button>
-          <button className="branch-button">Branch 3</button>
-          <button className="branch-button">Branch 4</button>
+        <div className="branch-info">
+          <span className="vote-count">0</span>
+          <i className="branch-icon fa fa-share-alt" />
         </div>
       </div>
     );
@@ -74,7 +72,7 @@ StoryCard.propTypes = {
   content: React.PropTypes.string.isRequired,
   title: React.PropTypes.string.isRequired,
   upvotes: React.PropTypes.number.isRequired,
-  downvotes: React.PropTypes.numbe.isRequired
+  downvotes: React.PropTypes.number.isRequired
 };
 
 export default StoryCard;
