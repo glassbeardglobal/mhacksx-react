@@ -1,0 +1,43 @@
+{
+  "name": "mhacksx-react",
+  "version": "1.0.0",
+  "description": "React frontend for MHackx X",
+  "main": "app.js",
+  "scripts": {
+    "start": "webpack-dev-server --config conf/webpack.dev.js",
+    "build": "webpack --config conf/webpack.prod.js -p",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/glassbeardglobal/mhacksx-react.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/glassbeardglobal/mhacksx-react/issues"
+  },
+  "homepage": "https://github.com/glassbeardglobal/mhacksx-react#readme",
+  "dependencies": {
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-router-dom": "^4.2.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.24.1",
+    "clean-webpack-plugin": "^0.1.16",
+    "css-loader": "^0.28.7",
+    "file-loader": "^0.11.2",
+    "html-webpack-plugin": "^2.30.1",
+    "postcss-import": "^11.0.0",
+    "postcss-loader": "^2.0.6",
+    "precss": "^2.0.0",
+    "style-loader": "^0.18.2",
+    "url-loader": "^0.5.9",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.8.2"
+  }
+}
