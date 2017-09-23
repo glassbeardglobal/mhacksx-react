@@ -1,14 +1,13 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 
-// import Navbar from './components/Navigation';
-// import Home from './scenes/Home';
-// import Login from './scenes/Login';
-// import Boards from './scenes/Boards';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import Landing from './scenes/Landing';
 
 const App = () => (
-  <div>
-    <h1>Hello</h1>
+  <div className="container">
+    <Route exact path="/" component={Landing} />
   </div>);
 
 export default App;
