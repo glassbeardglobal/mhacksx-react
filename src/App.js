@@ -10,8 +10,10 @@ import CardContainer from './components/CardContainer';
 const App = () => (
   <div className="container">
     <Navbar />
-    <Route exact path="/" component={CardContainer} />
-    <Route path="/write" component={Edit} />
+    <div className="routes" style={{ marginTop: '76px' }}>
+      <Route exact path="/" component={CardContainer} />
+      <Route path="/write" component={Edit} />
+    </div>
   </div>
 );
 

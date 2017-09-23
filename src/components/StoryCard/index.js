@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import './StoryCard.css';
 
@@ -56,7 +57,7 @@ class StoryCard extends Component {
           </div>
         </div>
         <div className="card-content">
-          <p className="card-context">{this.props.content}</p>
+          <p className="card-context">{/* this.props.content */}</p>
         </div>
         <div className="branch-info">
           <span className="vote-count">0</span>
@@ -68,11 +69,18 @@ class StoryCard extends Component {
 }
 
 StoryCard.propTypes = {
+<<<<<<< HEAD
   id: React.PropTypes.string.isRequired,
   content: React.PropTypes.string.isRequired,
   title: React.PropTypes.string.isRequired,
   upvotes: React.PropTypes.number.isRequired,
   downvotes: React.PropTypes.number.isRequired
+=======
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  upvotes: PropTypes.number.isRequired,
+  downvotes: PropTypes.number.isRequired
+>>>>>>> master
 };
 
 export default StoryCard;

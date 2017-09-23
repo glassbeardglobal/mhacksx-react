@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import './Navbar.css';
 
 const Navbar = () => (
@@ -17,30 +19,14 @@ const Navbar = () => (
         <span className="icon-bar" />
         <span className="icon-bar" />
       </button>
-      <a className="navbar-brand" href="#">
-        Twig
-      </a>
+      <Link className="navbar-brand" to="/">TRIDENT</Link>
     </div>
     <div id="navbar" className="navbar-collapse collapse">
-      <ul className="nav navbar-nav">
+      <ul className="nav navbar-nav navbar-right">
         <li>
-          <a href="#">
-            New
-          </a>
+          <Link to="/write">Write a Story</Link>
         </li>
       </ul>
-      <div className="col-sm-3 col-md-3">
-        <form className="navbar-form" role="search">
-          <div className="input-group">
-            <div className="input-group-btn">
-              <button className="btn btn-default" type="submit">
-                <i className="glyphicon glyphicon-search" />
-              </button>
-            </div>
-            <input type="text" className="form-control" placeholder="Search" name="q" />
-          </div>
-        </form>
-      </div>
     </div>
   </nav>
 );
