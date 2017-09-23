@@ -1,0 +1,101 @@
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
+import { Editor, EditorState, RichUtils, convertToRaw } from 'draft-js';
+
+import './edit.css';
+
+class Edit extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      text: EditorState.createEmpty(),
+      title: ''
+    };
+
+    this.handleTitleChange = this.handleTitleChange.bind(this);
+    this.editorChange = this.editorChange.bind(this);
+    this.submitStory = this.submitStory.bind(this);
+  }
+
+  handleTitleChange(event) {
+    this.setState({ title: event.target.value });
+  }
+
+  editorChange(editorState) {
+    RichUtils.toggleInlineStyle(this.state.text, 'BOLD');
+    this.setState({ text: editorState });
+  }
+
+  submitStory() {
+    const payload = {
+      title: this.state.title,
+      content: convertToRaw(this.state.text.getCurrentContent())
+    };
+
+    fetch('/api/story', {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: 'POST',
+      body: JSON.stringify(payload)
+    }).then(response => response.json())
+      .then((responseData) => {
+        console.log(responseData);
+      });
+  }
+
+  render() {
+    return (
+      <div className="edit-wrapper">
+        <div>
+          <div className="done-button">
+            <button className="btn btn-primary" onClick={this.submitStory}>
+              Done
+            </button>
+          </div>
+
+          <TitleInput
+            title={this.state.title}
+            titleChange={this.handleTitleChange}
+          />
+
+          <div className="content-editor">
+            <Editor
+              editorState={this.state.text}
+              onChange={this.editorChange}
+            />
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
+const Toolbar = props => (
+  <div className="toolbar">
+    <button onClick={props.bold}>Bold</button>
+  </div>
+);
+
+Toolbar.propTypes = {
+  bold: PropTypes.func.isRequired
+};
+
+const TitleInput = props => (
+  <input
+    className="title-input"
+    placeholder={'Title your story'}
+    value={props.title}
+    onChange={props.titleChange}
+  />
+);
+
+TitleInput.propTypes = {
+  title: PropTypes.string.isRequired,
+  titleChange: PropTypes.func.isRequired
+};
+
+export default Edit;
