@@ -1,0 +1,42 @@
+.edit-wrapper {
+    max-width: 800px;
+    margin: auto;
+    margin-top: 50px;
+
+    .done-button {
+        display: flex;
+        flex-direction: row-reverse;
+        margin-bottom: 7px;
+
+        & > .btn.btn-primary {
+            padding: 1px 14px;
+            border-radius: 2px;
+            background-color: #00B0FF;
+            border: none;
+        }
+    }
+    
+    input.title-input {
+        width: 100%;
+        font-size: 29px;
+        background: transparent;
+        border: none;
+        outline: none;
+        box-shadow: none !important;
+        
+        &::placeholder {
+            color: #ccc;
+        }
+    }
+
+    .content-editor {
+        margin-top: 0px;
+        padding-top: 10px;
+        border-top: 1px solid #e2e2e2;
+
+        .public-DraftEditor-content {
+            font-size: 18px;
+            min-height: 300px;
+        }
+    }
+}
