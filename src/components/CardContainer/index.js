@@ -8,16 +8,16 @@ class CardContainer extends Component {
     this.getStories = this.getStories.bind(this);
   }
 
+  componentWillMount() {
+    this.getStories();
+  }
+
   getStories() {
     fetch('/api/story')
       .then(results => results.json())
       .then((data) => {
         this.setState({ stories: data });
       });
-  }
-
-  componentWillMount() {
-    this.getStories();
   }
 
   render() {

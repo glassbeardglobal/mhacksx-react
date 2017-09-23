@@ -69,4 +69,12 @@ class StoryCard extends Component {
   }
 }
 
+StoryCard.propTypes = {
+  id: React.PropTypes.string.isRequired,
+  content: React.PropTypes.string.isRequired,
+  title: React.PropTypes.string.isRequired,
+  upvotes: React.PropTypes.number.isRequired,
+  downvotes: React.PropTypes.numbe.isRequired
+};
+
 export default StoryCard;
