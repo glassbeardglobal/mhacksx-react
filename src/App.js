@@ -6,6 +6,7 @@ import 'font-awesome/css/font-awesome.min.css';
 import Navbar from './components/Navbar';
 import Edit from './scenes/Edit';
 import CardContainer from './components/CardContainer';
+import View from './scenes/View';
 
 const App = () => (
   <div className="container">
@@ -14,6 +15,7 @@ const App = () => (
     <div className="routes" style={{ marginTop: '76px' }}>
       <Route exact path="/" component={CardContainer} />
       <Route path="/write" component={Edit} />
+      <Route path="/read/:id" component={View} />
     </div>
   </div>
 );

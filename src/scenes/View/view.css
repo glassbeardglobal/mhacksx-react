@@ -1,0 +1,15 @@
+.view {
+    max-width: 800px;
+    margin: auto;
+
+    .view-title {
+        text-align: center;
+        margin: auto;
+        padding-bottom: 30px;
+    }
+
+    .public-DraftEditor-content {
+        font-size: 18px;
+        min-height: 300px;
+    }
+}
