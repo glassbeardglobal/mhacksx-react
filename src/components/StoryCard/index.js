@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import './StoryCard.css';
 
@@ -56,7 +57,7 @@ class StoryCard extends Component {
           </div>
         </div>
         <div className="card-content">
-          <p className="card-context">{this.props.content}</p>
+          <p className="card-context">{/* this.props.content */}</p>
         </div>
         <div className="card-branch-container">
           <button className="branch-button">Branch 1</button>
@@ -70,11 +71,10 @@ class StoryCard extends Component {
 }
 
 StoryCard.propTypes = {
-  id: React.PropTypes.string.isRequired,
-  content: React.PropTypes.string.isRequired,
-  title: React.PropTypes.string.isRequired,
-  upvotes: React.PropTypes.number.isRequired,
-  downvotes: React.PropTypes.numbe.isRequired
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  upvotes: PropTypes.number.isRequired,
+  downvotes: PropTypes.number.isRequired
 };
 
 export default StoryCard;

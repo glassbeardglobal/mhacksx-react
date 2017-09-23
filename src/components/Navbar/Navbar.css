@@ -1,16 +1,51 @@
-.navbar-button {
-  background-color: #81d4fa;
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 600;
-  font-size: 1em;
-  text-decoration: none;
-  margin: 8px;
-  color: #fff;
-  padding: 8px;
-  border-radius: 2px;
-}
+.navbar {
+  border: none;
+  background-color: #fff;
+  box-shadow: 0 0 2px #777;
+  
+  .navbar-brand {
+    font-family: 'PT sans';
+    position: absolute;
+    left: 50%;
+    margin-left: -50px !important;  /* 50% of your logo width */
+    display: block;
+    font-weight: 600;
+    font-size: 26px;
+    color: #474747;
+    &:hover {
+      color: #333;
+    }
+  }
 
-.navbar-button:hover {
-  background-color: #81d4fa;
-  color: #fff;
+  .navbar-button {
+    background-color: #81d4fa;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 1em;
+    text-decoration: none;
+    margin: 8px;
+    color: #fff;
+    padding: 8px;
+    border-radius: 2px;
+  }
+
+  .navbar-button:hover {
+    background-color: #81d4fa;
+    color: #fff;
+  }
+
+  .navbar-right li {
+    margin-right: 50px;
+    padding: 10px;
+
+    a {
+      padding: 3px 8px;
+      border: 2px solid #777;
+      border-radius: 4px;
+
+      &:hover {
+        border-color: #333;
+      }
+    }
+  }
 }
