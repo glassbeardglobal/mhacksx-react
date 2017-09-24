@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import StoryCard from '../StoryCard';
 
 import './CardContainer.css';
@@ -43,5 +44,9 @@ class CardContainer extends Component {
     return <div className="cardContainer">{cards}</div>;
   }
 }
+
+CardContainer.propTypes = {
+  source: PropTypes.string.isRequired
+};
 
 export default CardContainer;

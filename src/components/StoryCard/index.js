@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 
 import './StoryCard.css';
 
+const testImage = require('../../images/test01.jpg');
+
 class StoryCard extends Component {
   constructor(props) {
     super(props);
-    // console.log(props);
     this.state = {
       upvotes: props.upvotes,
       downvotes: props.downvotes,
@@ -22,11 +23,9 @@ class StoryCard extends Component {
   }
 
   getAuthorUsername() {
-    console.log(this.props.author);
     fetch(`/api/user/${this.props.author}`)
       .then(results => results.json())
       .then((data) => {
-        console.log(data);
         this.setState({ author: data.username });
       });
   }
@@ -59,7 +58,7 @@ class StoryCard extends Component {
     return (
       <div className="card">
         <div className="card-header-image">
-          <img src={require('../../images/test01.jpg')} alt="" />
+          <img src={testImage} alt="" />
         </div>
         <div className="card-header">
           <div className="card-info-container">
@@ -78,7 +77,7 @@ class StoryCard extends Component {
           </div>
         </div>
         <div className="card-content">
-          <p className="card-context">{this.props.content}</p>
+          <p className="card-context">{/* this.props.content */}</p>
         </div>
         <div className="branch-info">
           <span className="vote-count">0</span>
@@ -94,8 +93,7 @@ StoryCard.propTypes = {
   title: PropTypes.string.isRequired,
   upvotes: PropTypes.number.isRequired,
   downvotes: PropTypes.number.isRequired,
-  author: PropTypes.string.isRequired,
-  content: PropTypes.string.isRequired
+  author: PropTypes.string.isRequired
 };
 
 export default StoryCard;
