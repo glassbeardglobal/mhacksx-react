@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { Editor, EditorState, RichUtils, convertToRaw } from 'draft-js';
+import { Redirect } from 'react-router-dom';
 
 import './edit.css';
 
@@ -11,7 +12,8 @@ class Edit extends Component {
 
     this.state = {
       text: EditorState.createEmpty(),
-      title: ''
+      title: '',
+      redirectUrl: ''
     };
 
     this.handleTitleChange = this.handleTitleChange.bind(this);
@@ -44,13 +46,16 @@ class Edit extends Component {
     })
       .then(response => response.json())
       .then((responseData) => {
-        console.log(responseData);
+        this.setState({
+          redirectUrl: `/read/${responseData.id}`
+        });
       });
   }
 
   render() {
     return (
       <div className="write-wrapper">
+        { this.state.redirectUrl !== '' && <Redirect to={this.state.redirectUrl} push /> }
         <div className="editor-options-wrapper">
           <div id="justify-options" className="options-list btn-group" data-toggle="buttons-radio">
             <button>
