@@ -4,6 +4,9 @@
   max-width: 40%;
   overflow: hidden;
   margin: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .card {

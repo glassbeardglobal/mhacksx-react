@@ -18,9 +18,25 @@
         margin: 0;
     }
 
-    .view-title {
-        margin-top: 0px;
-        padding-bottom: 10px;
+    margin: 0;
+  }
+
+  .view-title {
+    margin-top: 0px;
+    padding-bottom: 10px;
+  }
+
+  .public-DraftEditor-content {
+    font-size: 18px;
+  }
+
+  .main-editor {
+    .branch-options {
+      margin-top: 7px;
+      .choose-header {
+        text-align: center;
+        margin: auto;
+      }
     }
 
     .banner {
@@ -31,53 +47,92 @@
     .public-DraftEditor-content {
         font-size: 18px;
     }
-
-    .main-editor {
-        .branch-options {
-            margin-top: 7px;
-            .choose-header {
-                text-align: center;
-                margin: auto;
-            }
-        }
-
-        .paths {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .cv-link {
-            button {
-                font-size: 17px;
-                border-color: #4FC3F7;
-                color: #4FC3F7;
-                background-color: #fff;
-                border-radius: 3px;
-                border-width: 2px;
-                padding: 5px 19px;
-                margin: 15px;
-            }
-        }
+    
+    .paths {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
     }
 
-    .divider {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-
-        .dashed {
-            width: 90%;
-            border-top: 3px dashed #eee;
-            margin-right: 20px;
-        }
-
-        .btn {
-            background-color: #4FC3F7;
-            padding: 1px 14px;
-            border-radius: 2px;
-            margin-right: 8px;
-            border: none;
-        }
+    .cv-link {
+      button {
+        font-size: 17px;
+        border-color: #4fc3f7;
+        color: #4fc3f7;
+        background-color: #fff;
+        border-radius: 3px;
+        border-width: 2px;
+        padding: 5px 19px;
+        margin: 15px;
+      }
     }
+  }
+
+  .divider {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .dashed {
+      width: 90%;
+      border-top: 3px dashed #eee;
+      margin-right: 20px;
+    }
+
+    .btn {
+      background-color: #4fc3f7;
+      padding: 1px 14px;
+      border-radius: 2px;
+      margin-right: 8px;
+      border: none;
+    }
+  }
+}
+
+.view-title-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.card-button {
+  outline: none;
+  background-color: transparent;
+  border: none;
+  font-size: 1.4em;
+  font-weight: 400;
+  font-family: 'PT Sans', sans-serif;
+  text-align: right;
+}
+
+.card-info-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.vote-count {
+  margin: 4px;
+  font-size: 1em;
+  font-family: 'PT Sans', sans-serif;
+}
+
+.upvote-button {
+  color: #2196f3;
+}
+
+.upvote-button:hover {
+  color: #90caf9;
+}
+
+.downvote-button {
+  color: #f44336;
+}
+
+.downvote-button:hover {
+  color: #ef9a9a;
+}
+
+.card-button-container {
+  display: flex;
+  flex-direction: column;
 }

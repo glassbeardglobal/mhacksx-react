@@ -38,6 +38,7 @@ class CardContainer extends Component {
           downvotes={story.dv}
           author={story.author}
           imageUrl={story.image}
+          branches={story.children.length}
         />
       );
     });
