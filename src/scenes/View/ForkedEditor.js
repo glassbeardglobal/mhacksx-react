@@ -52,10 +52,19 @@ class ForkedEditor extends Component {
   }
 
   submit() {
+    let originalChild;
+
+    if (this.props.originalChild.blocks.length === 0) {
+      originalChild = null;
+    } else if (this.props.originalChild.blocks[0].text === '') {
+      originalChild = null;
+    } else {
+      originalChild = this.props.originalChild;
+    }
     const payload = {
       rootID: this.props.id,
       rootText: this.props.root,
-      originalChild: this.props.originalChild,
+      originalChild,
       branchedChild: convertToRaw(this.state.text.getCurrentContent()),
       title: this.props.title
     };
@@ -68,8 +77,8 @@ class ForkedEditor extends Component {
       },
       body: JSON.stringify(payload)
     }).then(result => result.json())
-      .then((data) => {
-        console.log(data);
+      .then(() => {
+        window.location.reload();
       });
   }
 
@@ -77,8 +86,11 @@ class ForkedEditor extends Component {
     const rootState = EditorState
       .createWithContent(convertFromRaw(this.props.root));
 
-    const origState = EditorState
-      .createWithContent(convertFromRaw(this.props.originalChild));
+    let origState = EditorState.createEmpty();
+    if (this.props.originalChild.blocks.length > 0) {
+      origState = EditorState
+        .createWithContent(convertFromRaw(this.props.originalChild));
+    }
 
     return (
       <div>

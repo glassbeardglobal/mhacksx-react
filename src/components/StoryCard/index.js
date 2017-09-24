@@ -1,5 +1,7 @@
+/* eslint jsx-a11y/interactive-supports-focus: 0 */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Redirect } from 'react-router-dom';
 import { convertFromRaw } from 'draft-js';
 
 import './StoryCard.css';
@@ -12,11 +14,13 @@ class StoryCard extends Component {
     this.state = {
       upvotes: props.upvotes,
       downvotes: props.downvotes,
-      author: 'No author'
+      author: 'No author',
+      redirectUrl: ''
     };
     this.upvote = this.upvote.bind(this);
     this.downvote = this.downvote.bind(this);
     this.getAuthorUsername = this.getAuthorUsername.bind(this);
+    this.cardclick = this.cardclick.bind(this);
   }
 
   componentWillMount() {
@@ -55,9 +59,16 @@ class StoryCard extends Component {
       });
   }
 
+  cardclick() {
+    this.setState({
+      redirectUrl: `/read/${this.props.id}`
+    });
+  }
+
   render() {
     return (
-      <div className="card">
+      <div onClick={this.cardclick} role="link" className="card">
+        { this.state.redirectUrl && <Redirect to={this.state.redirectUrl} /> }
         <div className="card-header-image">
           <img src={testImage} alt="" />
         </div>

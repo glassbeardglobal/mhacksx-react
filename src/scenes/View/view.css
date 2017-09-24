@@ -13,6 +13,8 @@
             background-color: #EF5350;
             border: none;
         }
+
+        margin: 0;
     }
 
     .view-title {
@@ -22,6 +24,35 @@
 
     .public-DraftEditor-content {
         font-size: 18px;
+    }
+
+    .main-editor {
+        .branch-options {
+            margin-top: 7px;
+            .choose-header {
+                text-align: center;
+                margin: auto;
+            }
+        }
+
+        .paths {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cv-link {
+            button {
+                font-size: 17px;
+                border-color: #4FC3F7;
+                color: #4FC3F7;
+                background-color: #fff;
+                border-radius: 3px;
+                border-width: 2px;
+                padding: 5px 19px;
+                margin: 15px;
+            }
+        }
     }
 
     .divider {
@@ -39,7 +70,7 @@
             background-color: #4FC3F7;
             padding: 1px 14px;
             border-radius: 2px;
-            margin-right: 24px;
+            margin-right: 8px;
             border: none;
         }
     }
