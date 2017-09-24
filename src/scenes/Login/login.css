@@ -1,14 +1,1 @@
-.logout-button {
-  outline: none;
-  border: none;
-  padding: 1px 14px;
-  border-radius: 2px;
-  /*background-color: #00b0ff;*/
-  background-color: transparent;
-  color: #f44336;
-  border: 2px solid #f44336;
-  &:hover {
-    color: #ef9a9a;
-    border-color: #ef9a9a;
-  }
-}
+
