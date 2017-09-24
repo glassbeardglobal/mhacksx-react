@@ -5,6 +5,9 @@ import './Navbar.css';
 
 const Navbar = () => (
   <nav className="navbar navbar-default navbar-fixed-top">
+    <div className="navbar-left">
+      <img className="logo" src={require('../../images/logo.svg')} alt="" />
+    </div>
     <div className="navbar-header">
       <button
         type="button"
@@ -19,12 +22,19 @@ const Navbar = () => (
         <span className="icon-bar" />
         <span className="icon-bar" />
       </button>
-      <Link className="navbar-brand" to="/">TRIDENT</Link>
+      <Link className="navbar-brand" to="/">
+        TRIDENT
+      </Link>
     </div>
     <div id="navbar" className="navbar-collapse collapse">
       <ul className="nav navbar-nav navbar-right">
         <li>
           <Link to="/write">Write a Story</Link>
+        </li>
+        <li id="profile-button">
+          <Link to="/profile">
+            <i id="profile-button" className="fa fa-user" aria-hidden="true" />
+          </Link>
         </li>
       </ul>
     </div>

@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
 import Navbar from './components/Navbar';
 import Edit from './scenes/Edit';
+import Profile from './scenes/Profile';
 import CardContainer from './components/CardContainer';
 
 const App = () => (
@@ -13,6 +14,7 @@ const App = () => (
     <div className="routes" style={{ marginTop: '76px' }}>
       <Route exact path="/" component={CardContainer} />
       <Route path="/write" component={Edit} />
+      <Route path="/profile" component={Profile} />
     </div>
   </div>
 );
