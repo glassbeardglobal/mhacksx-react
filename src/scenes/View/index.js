@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Editor, EditorState, convertFromRaw, convertToRaw } from 'draft-js';
 
 import ForkedEditor from './ForkedEditor';
+import ChildView from './ChildView';
 import './view.css';
 
 class View extends Component {
@@ -14,7 +15,8 @@ class View extends Component {
       breakKey: '',
       breakIdx: -1,
       root: null,
-      originalChild: null
+      originalChild: null,
+      children: []
     };
 
     this.textChange = this.textChange.bind(this);
@@ -22,13 +24,15 @@ class View extends Component {
   }
 
   componentWillMount() {
-    const id = this.props.match.params.id;
+    const id = this.props.subId === '' ? this.props.match.params.id :
+      this.props.subId;
     fetch(`/api/story/${id}`)
       .then(response => response.json())
       .then((data) => {
         this.setState({
           title: data.title,
-          text: EditorState.createWithContent(convertFromRaw(data.content))
+          text: EditorState.createWithContent(convertFromRaw(data.content)),
+          children: data.children
         });
       });
   }
@@ -49,14 +53,13 @@ class View extends Component {
 
     let seen = false;
     raw.blocks.forEach((d) => {
-      if (d.key === this.state.breakKey) {
-        seen = true;
-      }
-
       if (seen) {
         originalChild.push(d);
       } else {
         root.push(d);
+      }
+      if (d.key === this.state.breakKey) {
+        seen = true;
       }
     });
 
@@ -67,13 +70,20 @@ class View extends Component {
   }
 
   render() {
+    const id = this.props.subId === '' ? this.props.match.params.id :
+      this.props.subId;
+    const subView = this.props.subId === '';
+
     let currentEditor;
     const mainEditor = (
-      <Editor
-        editorState={this.state.text}
-        onClick={this.textClick}
-        onChange={this.textChange}
-      />
+      <div className="main-editor">
+        <Editor
+          editorState={this.state.text}
+          onClick={this.textClick}
+          onChange={this.textChange}
+        />
+        <ChildView viewChildren={this.state.children} />
+      </div>
     );
 
     currentEditor = mainEditor;
@@ -83,7 +93,7 @@ class View extends Component {
         <ForkedEditor
           root={this.state.root}
           originalChild={this.state.originalChild}
-          id={this.props.match.params.id}
+          id={id}
           title={this.state.title}
         />
       );
@@ -99,7 +109,7 @@ class View extends Component {
           )}
         </div>
 
-        <h1 className="view-title">{this.state.title}</h1>
+        { subView && <h1 className="view-title">{this.state.title}</h1> }
 
         {currentEditor}
       </div>
@@ -112,7 +122,18 @@ View.propTypes = {
     params: PropTypes.shape({
       id: PropTypes.string.isRequired
     })
-  }).isRequired
+  }),
+  subId: PropTypes.string
 };
+
+View.defaultProps = {
+  subId: '',
+  match: {
+    params: {
+      id: ''
+    }
+  }
+};
+
 
 export default View;

@@ -40,7 +40,6 @@ class Login extends Component {
         localStorage.setItem('currentUserId', data._id);
         localStorage.setItem('currentUsername', data.username);
         localStorage.setItem('currentUserPublicationCount', data.stories.length);
-        this.setState({ redirect: true });
       });
   }
 

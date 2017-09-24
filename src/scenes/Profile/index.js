@@ -20,6 +20,7 @@ class Profile extends Component {
     localStorage.removeItem('currentUsername');
     localStorage.removeItem('currentUserPublicationCount');
     this.setState({ redirect: true });
+    };
   }
 
   render() {
