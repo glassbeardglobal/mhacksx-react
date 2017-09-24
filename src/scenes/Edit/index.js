@@ -31,7 +31,8 @@ class Edit extends Component {
   submitStory() {
     const payload = {
       title: this.state.title,
-      content: convertToRaw(this.state.text.getCurrentContent())
+      content: convertToRaw(this.state.text.getCurrentContent()),
+      author: '59c71782d3fa0d7715e578af' // Temporarily hard coded
     };
 
     fetch('/api/story', {

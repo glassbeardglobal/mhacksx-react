@@ -26,7 +26,7 @@ class CardContainer extends Component {
 
   render() {
     const cards = [];
-    this.state.stories.forEach((story, i) => {
+    this.state.stories.forEach((story) => {
       cards.push(
         <StoryCard
           key={story._id}
@@ -35,6 +35,7 @@ class CardContainer extends Component {
           title={story.title}
           upvotes={story.upv}
           downvotes={story.dv}
+          author={story.author}
         />
       );
     });
