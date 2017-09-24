@@ -36,6 +36,7 @@ class View extends Component {
           title: data.title,
           text: EditorState.createWithContent(convertFromRaw(data.content)),
           children: data.children,
+          imageUrl: data.image,
           upvotes: data.upv,
           downvotes: data.dv
         });
@@ -134,6 +135,7 @@ class View extends Component {
             </button>
           )}
         </div>
+
         <div className="view-title-wrapper">
           {subView && <h1 className="view-title">{this.state.title}</h1>}
           <div className="card-button-container">
@@ -148,6 +150,7 @@ class View extends Component {
           </div>
         </div>
 
+        { this.state.imageUrl && <img className="banner" src={this.state.imageUrl} alt="" /> }
         {currentEditor}
       </div>
     );
