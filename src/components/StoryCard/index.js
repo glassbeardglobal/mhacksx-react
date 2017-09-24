@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { convertFromRaw } from 'draft-js';
 
 import './StoryCard.css';
 
@@ -77,7 +78,7 @@ class StoryCard extends Component {
           </div>
         </div>
         <div className="card-content">
-          <p className="card-context">{/* this.props.content */}</p>
+          <p className="card-context">{convertFromRaw(this.props.content).getPlainText()}</p>
         </div>
         <div className="branch-info">
           <span className="vote-count">0</span>
@@ -93,7 +94,9 @@ StoryCard.propTypes = {
   title: PropTypes.string.isRequired,
   upvotes: PropTypes.number.isRequired,
   downvotes: PropTypes.number.isRequired,
-  author: PropTypes.string.isRequired
+  author: PropTypes.string.isRequired,
+  content: PropTypes.shape({
+  }).isRequired
 };
 
 export default StoryCard;
