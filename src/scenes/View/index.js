@@ -149,7 +149,7 @@ class View extends Component {
             </button>
           </div>
         </div>
-         
+
         { this.state.imageUrl && <img className="banner" src={this.state.imageUrl} alt="" /> }
         {currentEditor}
       </div>

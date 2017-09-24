@@ -17,10 +17,12 @@
 
         margin: 0;
     }
-
-    margin: 0;
-  }
-
+    
+    .banner {
+        width: 100%;
+        margin-bottom: 23px;
+    }
+    
   .view-title {
     margin-top: 0px;
     padding-bottom: 10px;
@@ -39,10 +41,7 @@
       }
     }
 
-    .banner {
-        width: 100%;
-        margin-bottom: 23px;
-    }
+    
 
     .public-DraftEditor-content {
         font-size: 18px;
