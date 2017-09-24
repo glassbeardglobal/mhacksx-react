@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom';
 
 import './Navbar.css';
 
+const logo = require('../../images/logo.svg');
+
 const Navbar = () => (
   <nav className="navbar navbar-default navbar-fixed-top">
     <div className="navbar-left">
-      <img className="logo" src={require('../../images/logo.svg')} alt="" />
+      <img className="logo" src={logo} alt="" />
     </div>
     <div className="navbar-header">
       <button

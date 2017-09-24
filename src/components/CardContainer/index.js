@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import StoryCard from '../StoryCard';
 
 import './CardContainer.css';
@@ -26,7 +27,7 @@ class CardContainer extends Component {
 
   render() {
     const cards = [];
-    this.state.stories.forEach((story, i) => {
+    this.state.stories.forEach((story) => {
       cards.push(
         <StoryCard
           key={story._id}
@@ -35,6 +36,7 @@ class CardContainer extends Component {
           title={story.title}
           upvotes={story.upv}
           downvotes={story.dv}
+          author={story.author}
         />
       );
     });
@@ -42,5 +44,13 @@ class CardContainer extends Component {
     return <div className="cardContainer">{cards}</div>;
   }
 }
+
+CardContainer.propTypes = {
+  source: PropTypes.string.isRequired
+};
+
+CardContainer.defaultProps = {
+  source: 'all'
+};
 
 export default CardContainer;

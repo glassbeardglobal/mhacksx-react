@@ -1,17 +1,34 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { convertFromRaw } from 'draft-js';
 
 import './StoryCard.css';
+
+const testImage = require('../../images/test01.jpg');
 
 class StoryCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
       upvotes: props.upvotes,
-      downvotes: props.downvotes
+      downvotes: props.downvotes,
+      author: 'No author'
     };
     this.upvote = this.upvote.bind(this);
     this.downvote = this.downvote.bind(this);
+    this.getAuthorUsername = this.getAuthorUsername.bind(this);
+  }
+
+  componentWillMount() {
+    this.getAuthorUsername();
+  }
+
+  getAuthorUsername() {
+    fetch(`/api/user/${this.props.author}`)
+      .then(results => results.json())
+      .then((data) => {
+        this.setState({ author: data.username });
+      });
   }
 
   upvote() {
@@ -42,12 +59,12 @@ class StoryCard extends Component {
     return (
       <div className="card">
         <div className="card-header-image">
-          <img src={require('../../images/test01.jpg')} alt="" />
+          <img src={testImage} alt="" />
         </div>
         <div className="card-header">
           <div className="card-info-container">
             <h4 className="card-title">{this.props.title}</h4>
-            <h4 className="card-author">Author</h4>
+            <h4 className="card-author">{this.state.author}</h4>
           </div>
           <div className="card-button-container">
             <button className="card-button upvote-button" onClick={this.upvote}>
@@ -61,7 +78,7 @@ class StoryCard extends Component {
           </div>
         </div>
         <div className="card-content">
-          <p className="card-context">{this.props.content}</p>
+          <p className="card-context">{convertFromRaw(this.props.content).getPlainText()}</p>
         </div>
         <div className="branch-info">
           <span className="vote-count">0</span>
@@ -76,7 +93,10 @@ StoryCard.propTypes = {
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   upvotes: PropTypes.number.isRequired,
-  downvotes: PropTypes.number.isRequired
+  downvotes: PropTypes.number.isRequired,
+  author: PropTypes.string.isRequired,
+  content: PropTypes.shape({
+  }).isRequired
 };
 
 export default StoryCard;
