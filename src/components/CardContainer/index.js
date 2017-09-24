@@ -49,4 +49,8 @@ CardContainer.propTypes = {
   source: PropTypes.string.isRequired
 };
 
+CardContainer.defaultProps = {
+  source: 'all'
+};
+
 export default CardContainer;

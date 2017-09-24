@@ -27,6 +27,7 @@ class Login extends Component {
       .then(results => results.json())
       .then((data) => {
         localStorage.setItem('currentUserId', data._id);
+        localStorage.set('currentUsername', data.username);
         this.setState({ redirect: true });
       });
   }
