@@ -7,6 +7,7 @@ import Navbar from './components/Navbar';
 import Edit from './scenes/Edit';
 import Login from './scenes/Login';
 import CardContainer from './components/CardContainer';
+import View from './scenes/View';
 
 const App = () => (
   <div className="container">
@@ -19,6 +20,7 @@ const App = () => (
         render={() =>
           (localStorage.getItem('currentUserId') !== null ? <Redirect to="/profile" /> : <Login />)}
       />
+      <Route path="/read/:id" component={View} />
     </div>
   </div>
 );

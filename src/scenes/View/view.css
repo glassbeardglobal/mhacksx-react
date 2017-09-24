@@ -1,0 +1,46 @@
+.view {
+    max-width: 800px;
+    margin: auto;
+
+    .branch-button {
+        display: flex;
+        flex-direction: row-reverse;
+        height: 40px;
+
+        & > .btn.btn-primary {
+            padding: 1px 14px;
+            border-radius: 2px;
+            background-color: #EF5350;
+            border: none;
+        }
+    }
+
+    .view-title {
+        margin-top: 0px;
+        padding-bottom: 10px;
+    }
+
+    .public-DraftEditor-content {
+        font-size: 18px;
+    }
+
+    .divider {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        .dashed {
+            width: 90%;
+            border-top: 3px dashed #eee;
+            margin-right: 20px;
+        }
+
+        .btn {
+            background-color: #4FC3F7;
+            padding: 1px 14px;
+            border-radius: 2px;
+            margin-right: 24px;
+            border: none;
+        }
+    }
+}
