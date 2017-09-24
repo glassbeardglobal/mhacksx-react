@@ -15,6 +15,7 @@ class StoryCard extends Component {
       upvotes: props.upvotes,
       downvotes: props.downvotes,
       author: 'No author',
+      branches: props.branches,
       redirectUrl: ''
     };
     this.upvote = this.upvote.bind(this);
@@ -68,7 +69,7 @@ class StoryCard extends Component {
   render() {
     return (
       <div onClick={this.cardclick} role="link" className="card">
-        { this.state.redirectUrl && <Redirect to={this.state.redirectUrl} /> }
+        {this.state.redirectUrl && <Redirect to={this.state.redirectUrl} />}
         <div className="card-header-image">
           <img src={testImage} alt="" />
         </div>
@@ -92,7 +93,7 @@ class StoryCard extends Component {
           <p className="card-context">{convertFromRaw(this.props.content).getPlainText()}</p>
         </div>
         <div className="branch-info">
-          <span className="vote-count">0</span>
+          <span className="vote-count">{this.state.branches}</span>
           <i className="branch-icon fa fa-share-alt" />
         </div>
       </div>
@@ -106,8 +107,12 @@ StoryCard.propTypes = {
   upvotes: PropTypes.number.isRequired,
   downvotes: PropTypes.number.isRequired,
   author: PropTypes.string.isRequired,
-  content: PropTypes.shape({
-  }).isRequired
+  content: PropTypes.shape({}).isRequired,
+  branches: PropTypes.number
+};
+
+StoryCard.defaultProps = {
+  branches: 0
 };
 
 export default StoryCard;
