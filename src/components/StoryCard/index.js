@@ -16,6 +16,7 @@ class StoryCard extends Component {
       downvotes: props.downvotes,
       author: 'No author',
       branches: props.branches,
+      genre: 'No genre',
       redirectUrl: ''
     };
     this.upvote = this.upvote.bind(this);
@@ -76,7 +77,9 @@ class StoryCard extends Component {
         <div className="card-header">
           <div className="card-info-container">
             <h4 className="card-title">{this.props.title}</h4>
-            <h4 className="card-author">{this.state.author}</h4>
+            <h4 className="card-author">
+              {this.state.author} - {this.state.genre}
+            </h4>
           </div>
           <div className="card-button-container">
             <button className="card-button upvote-button" onClick={this.upvote}>
