@@ -14,7 +14,15 @@ const App = () => (
     <div className="routes" style={{ marginTop: '76px' }}>
       <Route exact path="/" component={CardContainer} />
       <Route path="/write" component={Edit} />
+
       <Route path="/profile" component={Profile} />
+
+      <Route path="/login" component={Login} />
+      <Route
+        path="/profile"
+        render={() => (localStorage.getItem('currentUserId') !== null ? <Profile /> : <Login />)}
+      />
+      <Route path="/read/:id" component={View} />
     </div>
   </div>
 );

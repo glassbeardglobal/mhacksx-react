@@ -29,9 +29,16 @@ class Edit extends Component {
   }
 
   submitStory() {
+    const currentUserId = localStorage.getItem('currentUserId');
+
     const payload = {
       title: this.state.title,
+
       content: convertToRaw(this.state.text.getCurrentContent())
+
+      content: convertToRaw(this.state.text.getCurrentContent()),
+      author: currentUserId
+
     };
 
     fetch('/api/story', {
@@ -51,6 +58,10 @@ class Edit extends Component {
   render() {
     return (
       <div className="write-wrapper">
+
+
+        {this.state.redirectUrl !== '' && <Redirect to={this.state.redirectUrl} push />}
+
         <div className="editor-options-wrapper">
           <div id="justify-options" className="options-list btn-group" data-toggle="buttons-radio">
             <button>

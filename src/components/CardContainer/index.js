@@ -15,13 +15,12 @@ class CardContainer extends Component {
   }
 
   getStories() {
-    const route = this.props.source === 'user' ? '/api/story' : '/api/story';
-
-    fetch(route)
-      .then(results => results.json())
-      .then((data) => {
-        this.setState({ stories: data });
-      });
+    const currentUserId = localStorage.getItem('currentUserId');
+    const user = this.props.source === 'user';
+    fetch('/api/story')
+      .then(result => result.json())
+      .then(data => (user ? data.filter(story => story.author === currentUserId) : data))
+      .then(data => this.setState({ stories: data }));
   }
 
   render() {
