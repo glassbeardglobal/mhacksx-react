@@ -19,6 +19,9 @@ class StoryCard extends Component {
       genre: 'No genre',
       redirectUrl: ''
     };
+    if (this.props.genre) {
+      this.state.genre = this.props.genre;
+    }
     this.upvote = this.upvote.bind(this);
     this.downvote = this.downvote.bind(this);
     this.getAuthorUsername = this.getAuthorUsername.bind(this);
@@ -112,12 +115,14 @@ StoryCard.propTypes = {
   author: PropTypes.string.isRequired,
   content: PropTypes.shape({}).isRequired,
   branches: PropTypes.number,
-  imageUrl: PropTypes.string
+  imageUrl: PropTypes.string,
+  genre: PropTypes.string
 };
 
 StoryCard.defaultProps = {
   imageUrl: '',
-  branches: 0
+  branches: 0,
+  genre: ''
 };
 
 export default StoryCard;

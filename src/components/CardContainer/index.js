@@ -39,6 +39,7 @@ class CardContainer extends Component {
           upvotes={story.upv}
           downvotes={story.dv}
           author={story.author}
+          genre={story.genre}
           imageUrl={story.image}
           branches={story.children.length}
         />
