@@ -1,42 +1,83 @@
+.editor-options-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  max-width: 800px;
+  margin: auto;
+  font-size: 1.2em;
+
+  .options-list {
+    margin-right: 32px;
+  }
+
+  .options-list button {
+    outline: none;
+    border: none;
+    background-color: transparent;
+  }
+}
+
 .edit-wrapper {
-    max-width: 800px;
-    margin: auto;
-    margin-top: 50px;
+  max-width: 800px;
+  margin: auto;
+  margin-top: 50px;
+  border: 1px solid #e9e9e9;
+  padding: 16px;
+  border-radius: 2px;
+  .done-button {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-bottom: 7px;
 
-    .done-button {
-        display: flex;
-        flex-direction: row-reverse;
-        margin-bottom: 7px;
-
-        & > .btn.btn-primary {
-            padding: 1px 14px;
-            border-radius: 2px;
-            background-color: #00B0FF;
-            border: none;
-        }
+    & > .btn.btn-primary {
+      padding: 1px 14px;
+      border-radius: 2px;
+      /*background-color: #00b0ff;*/
+      background-color: #2196f3;
+      border: none;
+      color: #fff;
+      &:hover {
+        background-color: #90caf9;
+      }
     }
-    
-    input.title-input {
-        width: 100%;
-        font-size: 29px;
-        background: transparent;
-        border: none;
-        outline: none;
-        box-shadow: none !important;
-        
-        &::placeholder {
-            color: #ccc;
-        }
-    }
+  }
 
-    .content-editor {
-        margin-top: 0px;
-        padding-top: 10px;
-        border-top: 1px solid #e2e2e2;
+  .edit-header {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+  }
 
-        .public-DraftEditor-content {
-            font-size: 18px;
-            min-height: 300px;
-        }
+  .edit-title-wrapper {
+    border-bottom: 1px solid #e2e2e2;
+    width: 100%;
+    margin-right: 16px;
+  }
+
+  input.title-input {
+    width: 100%;
+    font-size: 29px;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #37474f;
+    box-shadow: none !important;
+    font-family: 'PT Sans', sans-serif;
+    font-weight: 700;
+    &::placeholder {
+      color: #ccc;
     }
+  }
+
+  .content-editor {
+    margin-top: 0px;
+    padding-top: 10px;
+    /*border-top: 1px solid #e2e2e2;*/
+    font-family: 'PT Serif', serif;
+    font-weight: 400;
+    .public-DraftEditor-content {
+      font-size: 18px;
+      min-height: 300px;
+    }
+  }
 }

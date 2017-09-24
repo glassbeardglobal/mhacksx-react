@@ -41,9 +41,13 @@ class StoryCard extends Component {
   render() {
     return (
       <div className="card">
+        <div className="card-header-image">
+          <img src={require('../../images/test01.jpg')} alt="" />
+        </div>
         <div className="card-header">
           <div className="card-info-container">
             <h4 className="card-title">{this.props.title}</h4>
+            <h4 className="card-author">Author</h4>
           </div>
           <div className="card-button-container">
             <button className="card-button upvote-button" onClick={this.upvote}>
@@ -57,13 +61,11 @@ class StoryCard extends Component {
           </div>
         </div>
         <div className="card-content">
-          <p className="card-context">{/* this.props.content */}</p>
+          <p className="card-context">{this.props.content}</p>
         </div>
-        <div className="card-branch-container">
-          <button className="branch-button">Branch 1</button>
-          <button className="branch-button">Branch 2</button>
-          <button className="branch-button">Branch 3</button>
-          <button className="branch-button">Branch 4</button>
+        <div className="branch-info">
+          <span className="vote-count">0</span>
+          <i className="branch-icon fa fa-share-alt" />
         </div>
       </div>
     );

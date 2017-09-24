@@ -43,7 +43,8 @@ class Edit extends Component {
       },
       method: 'POST',
       body: JSON.stringify(payload)
-    }).then(response => response.json())
+    })
+      .then(response => response.json())
       .then((responseData) => {
         this.setState({
           redirectUrl: `/read/${responseData.id}`
@@ -53,25 +54,52 @@ class Edit extends Component {
 
   render() {
     return (
-      <div className="edit-wrapper">
+      <div className="write-wrapper">
         { this.state.redirectUrl !== '' && <Redirect to={this.state.redirectUrl} push /> }
-        <div>
-          <div className="done-button">
-            <button className="btn btn-primary" onClick={this.submitStory}>
-              Done
+        <div className="editor-options-wrapper">
+          <div id="justify-options" className="options-list btn-group" data-toggle="buttons-radio">
+            <button>
+              <i className="fa fa-align-left" aria-hidden="true" />
+            </button>
+            <button>
+              <i className="fa fa-align-center" aria-hidden="true" />
+            </button>
+            <button>
+              <i className="fa fa-align-right" aria-hidden="true" />
+            </button>
+            <button>
+              <i className="fa fa-align-justify" aria-hidden="true" />
             </button>
           </div>
 
-          <TitleInput
-            title={this.state.title}
-            titleChange={this.handleTitleChange}
-          />
+          <div id="text-options" className="options-list btn-group" data-toggle="buttons-radio">
+            <button>
+              <i className="fa fa-italic" aria-hidden="true" />
+            </button>
+            <button>
+              <i className="fa fa-bold" aria-hidden="true" />
+            </button>
+            <button>
+              <i className="fa fa-underline" aria-hidden="true" />
+            </button>
+          </div>
+        </div>
+        <div className="edit-wrapper">
+          <div>
+            <div className="edit-header">
+              <div className="edit-title-wrapper">
+                <TitleInput title={this.state.title} titleChange={this.handleTitleChange} />
+              </div>
+              <div className="done-button">
+                <button className="btn btn-primary" onClick={this.submitStory}>
+                  Publish
+                </button>
+              </div>
+            </div>
 
-          <div className="content-editor">
-            <Editor
-              editorState={this.state.text}
-              onChange={this.editorChange}
-            />
+            <div className="content-editor">
+              <Editor editorState={this.state.text} onChange={this.editorChange} />
+            </div>
           </div>
         </div>
       </div>
