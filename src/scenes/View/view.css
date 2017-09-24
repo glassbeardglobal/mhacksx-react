@@ -1,6 +1,7 @@
 .view {
     max-width: 800px;
     margin: auto;
+    margin-bottom: 100px;
 
     .branch-button {
         display: flex;
@@ -20,6 +21,11 @@
     .view-title {
         margin-top: 0px;
         padding-bottom: 10px;
+    }
+
+    .banner {
+        width: 100%;
+        margin-bottom: 23px;
     }
 
     .public-DraftEditor-content {
