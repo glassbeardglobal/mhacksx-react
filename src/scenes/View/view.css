@@ -44,13 +44,17 @@
     .cv-link {
       button {
         font-size: 17px;
-        border-color: #4fc3f7;
-        color: #4fc3f7;
+        border-color: #2196f3;
+        color: #2196f3;
         background-color: #fff;
         border-radius: 3px;
         border-width: 2px;
         padding: 5px 19px;
         margin: 15px;
+        &:hover {
+          border-color: #90caf9;
+          color: #90caf9;
+        }
       }
     }
   }
