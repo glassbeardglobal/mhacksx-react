@@ -16,24 +16,55 @@ class View extends Component {
       breakIdx: -1,
       root: null,
       originalChild: null,
-      children: []
+      children: [],
+      upvotes: 0,
+      downvotes: 0
     };
 
     this.textChange = this.textChange.bind(this);
     this.branch = this.branch.bind(this);
+    this.upvote = this.upvote.bind(this);
+    this.downvote = this.downvote.bind(this);
   }
 
   componentWillMount() {
-    const id = this.props.subId === '' ? this.props.match.params.id :
-      this.props.subId;
+    const id = this.props.subId === '' ? this.props.match.params.id : this.props.subId;
     fetch(`/api/story/${id}`)
       .then(response => response.json())
       .then((data) => {
         this.setState({
           title: data.title,
           text: EditorState.createWithContent(convertFromRaw(data.content)),
-          children: data.children
+          children: data.children,
+          upvotes: data.upv,
+          downvotes: data.dv
         });
+      });
+  }
+
+  upvote() {
+    const id = this.props.subId === '' ? this.props.match.params.id : this.props.subId;
+    fetch(`/api/story/${id}/upv`, {
+      method: 'POST'
+    })
+      .then(results => results.json())
+      .then((data) => {
+        if (data.success) {
+          this.setState({ upvotes: this.state.upvotes + 1 });
+        }
+      });
+  }
+
+  downvote() {
+    const id = this.props.subId === '' ? this.props.match.params.id : this.props.subId;
+    fetch(`/api/story/${id}/dv`, {
+      method: 'POST'
+    })
+      .then(results => results.json())
+      .then((data) => {
+        if (data.success) {
+          this.setState({ downvotes: this.state.downvotes + 1 });
+        }
       });
   }
 
@@ -70,18 +101,13 @@ class View extends Component {
   }
 
   render() {
-    const id = this.props.subId === '' ? this.props.match.params.id :
-      this.props.subId;
+    const id = this.props.subId === '' ? this.props.match.params.id : this.props.subId;
     const subView = this.props.subId === '';
 
     let currentEditor;
     const mainEditor = (
       <div className="main-editor">
-        <Editor
-          editorState={this.state.text}
-          onClick={this.textClick}
-          onChange={this.textChange}
-        />
+        <Editor editorState={this.state.text} onClick={this.textClick} onChange={this.textChange} />
         <ChildView viewChildren={this.state.children} />
       </div>
     );
@@ -108,8 +134,19 @@ class View extends Component {
             </button>
           )}
         </div>
-
-        { subView && <h1 className="view-title">{this.state.title}</h1> }
+        <div className="view-title-wrapper">
+          {subView && <h1 className="view-title">{this.state.title}</h1>}
+          <div className="card-button-container">
+            <button className="card-button upvote-button" onClick={this.upvote}>
+              <span className="vote-count">{this.state.upvotes}</span>
+              <i className="fa fa-angle-up" />
+            </button>
+            <button className="card-button downvote-button" onClick={this.downvote}>
+              <span className="vote-count">{this.state.downvotes}</span>
+              <i className="fa fa-angle-down" />
+            </button>
+          </div>
+        </div>
 
         {currentEditor}
       </div>
@@ -134,6 +171,5 @@ View.defaultProps = {
     }
   }
 };
-
 
 export default View;
