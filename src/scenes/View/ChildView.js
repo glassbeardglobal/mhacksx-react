@@ -79,7 +79,6 @@ class ChildView extends Component {
 
     return (
       <div className="branch-options">
-        <h4 className="choose-header">Choose Your Path</h4>
         <div className="paths">
           {paths}
         </div>

@@ -6,7 +6,7 @@ import { convertFromRaw } from 'draft-js';
 
 import './StoryCard.css';
 
-const testImage = require('../../images/test01.jpg');
+// const testImage = require('../../images/test01.jpg');
 
 class StoryCard extends Component {
   constructor(props) {
@@ -71,7 +71,7 @@ class StoryCard extends Component {
       <div onClick={this.cardclick} role="link" className="card">
         {this.state.redirectUrl && <Redirect to={this.state.redirectUrl} />}
         <div className="card-header-image">
-          <img src={testImage} alt="" />
+          <img src={this.props.imageUrl} alt="" />
         </div>
         <div className="card-header">
           <div className="card-info-container">
@@ -108,10 +108,12 @@ StoryCard.propTypes = {
   downvotes: PropTypes.number.isRequired,
   author: PropTypes.string.isRequired,
   content: PropTypes.shape({}).isRequired,
-  branches: PropTypes.number
+  branches: PropTypes.number,
+  imageUrl: PropTypes.string
 };
 
 StoryCard.defaultProps = {
+  imageUrl: '',
   branches: 0
 };
 

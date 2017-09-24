@@ -8,7 +8,7 @@ const logo = require('../../images/logo.svg');
 const Navbar = () => (
   <nav className="navbar navbar-default navbar-fixed-top">
     <div className="navbar-left">
-      <img className="logo" src={logo} alt="" />
+      <img style={{ maxWidth: 84, marginLeft: 30 }} className="logo" src={logo} alt="" />
     </div>
     <div className="navbar-header">
       <button
