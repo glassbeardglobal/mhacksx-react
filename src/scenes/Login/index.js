@@ -23,12 +23,23 @@ class Login extends Component {
   }
 
   login() {
-    fetch(`/api/user/${this.state.logInput}`)
+    const payload = {
+      username: this.state.logInput
+    };
+
+    fetch('/api/user/login', {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: 'POST',
+      body: JSON.stringify(payload)
+    })
       .then(results => results.json())
       .then((data) => {
         localStorage.setItem('currentUserId', data._id);
-        localStorage.set('currentUsername', data.username);
-        this.setState({ redirect: true });
+        localStorage.setItem('currentUsername', data.username);
+        localStorage.setItem('currentUserPublicationCount', data.stories.length);
       });
   }
 
